@@ -1,0 +1,36 @@
+$margins: 20;
+$paddings: 20;
+
+@for $margin from 1 through $margins {
+    .ma-#{$margin} {
+        margin: $margin * .4rem ;
+    }
+
+    .mx-#{$margin} {
+        margin-left: $margin * .4rem;
+        margin-right: $margin * .4rem;
+    }
+
+
+    .my-#{$margin} {
+        margin-top: $margin * .4rem;
+        margin-bottom: $margin * .4rem;
+    }
+}
+
+@for $padding from 1 through $paddings {
+    .ma-#{$padding} {
+        padding: $padding * .4rem ;
+    }
+
+    .mx-#{$padding} {
+        padding-left: $padding * .4rem;
+        padding-right: $padding * .4rem;
+    }
+
+
+    .my-#{$padding} {
+        padding-top: $padding * .4rem;
+        padding-bottom: $padding * .4rem;
+    }
+}
