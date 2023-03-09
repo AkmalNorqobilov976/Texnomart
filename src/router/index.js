@@ -1,3 +1,5 @@
+import { useAuthStore } from '@/store/authStore'
+import nProgress from 'nprogress'
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
@@ -14,8 +16,20 @@ const routes = [
       {
         path: '',
         component: () => import('@/views/product/index.vue')
+      },
+      {
+        path: 'update/:id',
+        name: 'product-update',
+        meta: {
+          requiresAuth: true,
+        },
+        component: () => import('@/views/product/update.vue')
       }
     ]
+  },
+  {
+    path: '/auth/signin',
+    component: () => import('@/views/auth/signin.vue')
   },
   {
     path: '/about',
@@ -32,4 +46,19 @@ const router = createRouter({
   routes
 })
 
+
+router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore();
+  nProgress.start();
+  if ( to.meta.requiresAuth && authStore.token ) {
+    next()
+    nProgress.done()
+  } else if(to.meta.requiresAuth && !authStore.token) {
+      next(`/auth/signin?redirect=${to.path}`);
+      nProgress.done();
+  } else {
+   next()
+   nProgress.done();
+  }
+})
 export default router

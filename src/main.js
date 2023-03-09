@@ -5,6 +5,8 @@ import { createPinia } from 'pinia'
 import VueAwesomePaginate from "vue-awesome-paginate";
 import Vue3Toasity from 'vue3-toastify';
 import VueRippler from "vue-rippler";
+import vue3StarRatings from "vue3-star-ratings";
+
 // necessary css file
 
 const pinia = createPinia();
@@ -19,6 +21,7 @@ const app = createApp(App)
 app.use(router);
 app.use(pinia);
 
+app.component('vue3-star-ratings', vue3StarRatings);
 
 app.use(VueAwesomePaginate);
 app.use(Vue3Toasity);

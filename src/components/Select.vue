@@ -38,7 +38,7 @@ import { computed, defineComponent } from "vue";
 </script>
 <style lang="scss" scoped>
     select {
-        height: 2rem;
+        // height: 2rem;
         background: transparent;
         padding: .2rem .5rem;
         display: inline-block;

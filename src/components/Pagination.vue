@@ -12,7 +12,7 @@
         },
         maxPagesShown: {
             type: Number,
-            default: 5
+            default: 3
         }
 
     },
@@ -44,12 +44,12 @@
 <style>
   .pagination-container {
     display: flex;
-    column-gap: 10px;
+    column-gap: .3rem;
   }
   .paginate-buttons {
-    height: 40px;
-    width: 40px;
-    border-radius: 20px;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 2rem;
     cursor: pointer;
     background-color: rgb(242, 242, 242);
     border: 1px solid rgb(217, 217, 217);
@@ -65,5 +65,9 @@
   }
   .active-page:hover {
     background-color: #2988c8;
+  }
+
+  @media screen and (max-width: 360px) {
+    
   }
 </style>

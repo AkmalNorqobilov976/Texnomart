@@ -1,7 +1,8 @@
 
 <template>
-	<div>
-       <DataTable filter :headers="headers" :data="filteredProducts">
+	<div class="product">
+       <YSlider class="y-slider">
+        <DataTable filter :headers="headers" :data="filteredProducts">
             <!-- filters -->
             <template #filter-id>
                 <div @click="onClearFilterAttributes" ripple class="pa-5">
@@ -49,6 +50,7 @@
             </template>
             <!-- table columns end -->
         </DataTable>
+       </YSlider>
        <div class="pagination">
             <pagination 
                 :perPage="productStore.data.limit" 
@@ -71,8 +73,9 @@ import TextField from '@/components/TextField.vue';
 import Select from '@/components/Select.vue';
 import Pagination from '@/components/Pagination.vue';
 import { toast } from 'vue3-toastify'
+import YSlider from '@/components/YSlider.vue';
 export default {
-  components: { DataTable, TextField, Select, Pagination },
+  components: { DataTable, TextField, Select, Pagination, YSlider },
     setup() {
         const headers = ref([
             {
@@ -206,6 +209,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .product {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+
+    }
+
+    .y-slider {
+        text-align: center;
+        justify-content: center;
+        margin-top: 2rem;
+    }
     .search {
         width: 20rem;
         margin-bottom: 1rem;
@@ -233,7 +250,18 @@ export default {
 
    .pagination {
     display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+    margin-top: 2rem;
     justify-content: space-around;
     align-items: center;
+   }
+
+
+   @media screen and (max-width: 360px) {
+        .pagination {
+            flex-direction: column;
+            gap: .5rem;
+        }
    }
 </style>
