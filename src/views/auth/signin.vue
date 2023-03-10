@@ -75,7 +75,6 @@ import { useRoute, useRouter } from 'vue-router'
             const onLogin = () => {
                 v$.value.$validate()
                 .then(response => {
-                    console.log(response);
                     if(response) {
                         authStore.login({ ...signInForm })
                         .then(() => {

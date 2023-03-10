@@ -18,7 +18,6 @@ export const useAuthStore = defineStore('auth', {
             return new Promise((resolve, reject) => {
                 login({username, password})
                     .then(response => {
-                        console.log(response.data);
                         this.user = response.data;
                         this.token = response.data?.token;
                         setToken(response.data?.token);

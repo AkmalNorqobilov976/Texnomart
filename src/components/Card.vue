@@ -33,8 +33,9 @@
 <script>
 import { computed, defineComponent, toRaw } from "vue";
 import { get } from 'lodash';
-import { updateProduct } from "@/api/productApi";
+import { updateProductRating } from "@/api/productApi";
 import { useRouter } from "vue-router";
+import { toast } from "vue3-toastify";
     export default defineComponent({
         props: {
             data: {},
@@ -50,16 +51,17 @@ import { useRouter } from "vue-router";
                 get() {
                     return get(props.data, 'rating', 0)
                 },
-                set(value) {
-                    console.log(value);
+                set() {
                     updateCardRating();
                 }
             });
             const rawData = computed(() => toRaw(props.data));
             const updateCardRating = () => {
-                updateProduct({
+                updateProductRating({
                     id: props.data.id,
                     rating: rating.value
+                }).then(response => {
+                    toast.success(response)
                 })
             }
 

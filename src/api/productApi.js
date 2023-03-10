@@ -21,10 +21,12 @@ export function getProducts({limit, skip, q}) {
     });
 }
 
-export function updateProduct(data) {
+export function updateProductRating(data) {
     return request({
         url: `${URI}/${data.id}`,
-        method: 'put',
-        data: data
+        method: 'PUT', /* or PATCH */
+        data: {
+            rating: data.rating
+        }
     })
 }
